@@ -1,6 +1,6 @@
 import React from "react";
 import logo from "../../assets/img/logo.jpg";
-import { Search } from "../Serch/Search";
+import { Search } from "../Search/Search";
 export const Header = ({ getValue, searcData }) => {
   return (
     <header>
