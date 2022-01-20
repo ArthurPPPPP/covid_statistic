@@ -1,18 +1,38 @@
 import React from "react";
 import "./modalModule.scss";
+import confirmedIco from "../../assets/img/health.jpg";
+import deathIco from "../../assets/img/death.jpg";
+import recovereddIco from "../../assets/img/recovered.jpg";
+import { Button } from "../Button/Button";
+
 export const Modal = ({ active, setActive, selectedCountry }) => {
-  console.log(selectedCountry);
   return (
     <div
       className={active ? "modal active" : "modal"}
       onClick={() => setActive(false)}
     >
-      <div className="madal__content" onClick={(e) => e.stopPropagation()}>
-        <div>{selectedCountry.Country}</div>
-        <div>{selectedCountry.TotalConfirmed}</div>
-        <div>{selectedCountry.TotalDeaths}</div>
-        <div>{selectedCountry.TotalRecovered}</div>
-        <button>Ok</button>
+      <div className="modal__wrapper">
+        <div className="madal__content" onClick={(e) => e.stopPropagation()}>
+          <h1>{selectedCountry.Country}</h1>
+          <div>
+            <div className="content">
+              <img src={confirmedIco} alt="Confirmed" />
+              <span>Total Confirmed</span>
+              <p>{selectedCountry.TotalConfirmed}</p>
+            </div>
+            <div className="content">
+              <img src={deathIco} alt="Deaths" />
+              <span>Total Deaths</span>
+              <p>{selectedCountry.TotalDeaths}</p>
+            </div>
+            <div className="content">
+              <img src={recovereddIco} alt="Recovered" />
+              <span>Total Recovered</span>
+              <p>{selectedCountry.TotalRecovered}</p>
+            </div>
+          </div>
+          <Button setActive={setActive}>OK</Button>
+        </div>
       </div>
     </div>
   );

@@ -1,0 +1,28 @@
+.headerContent {
+  padding: 0;
+  width: auto;
+  :hover {
+    cursor: pointer;
+  }
+  th {
+    background-color: #2196f3;
+    height: 50px;
+    color: white;
+  }
+}
+.number {
+  width: 50px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+.country {
+  text-align: start;
+  padding-left: 15px;
+  width: 65%;
+}
+.totalConfirmed {
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  text-align: start;
+  padding-left: 15px;
+}
