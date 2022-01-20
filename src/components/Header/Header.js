@@ -8,7 +8,7 @@ export const Header = ({ setValue, searchValue }) => {
     <header className={styles.header}>
       <div className={styles.logo}>
         <img src={logo} alt="Logo" />
-        <h1>STATISTIC</h1>
+        <h1>Statistic</h1>
       </div>
       <section role="search">
         <SearchInput searchValue={searchValue} onChange={setValue} />
