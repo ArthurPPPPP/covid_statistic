@@ -4,14 +4,14 @@ import styles from "./item.module.scss";
 export const TableItem = ({
   countryInfo,
   countryNumber,
-  countriesInfo,
+  onSelectCountry,
   setModalActive,
 }) => {
   return (
     <tr
       className={styles.item}
       onClick={() => {
-        countriesInfo(countryInfo);
+        onSelectCountry(countryInfo);
         setModalActive(true);
       }}
     >

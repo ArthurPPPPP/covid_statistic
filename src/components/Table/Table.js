@@ -4,7 +4,7 @@ import { TableItem } from "../TableItem/TableItem";
 import styles from "./table.module.scss";
 export const Table = ({
   filteredCountries,
-  countriesInfo,
+  onSelectCountry,
   setModalActive,
   setSortType,
 }) => {
@@ -18,7 +18,7 @@ export const Table = ({
             countryInfo={n}
             countryNumber={index + 1}
             key={n.ID}
-            countriesInfo={countriesInfo}
+            onSelectCountry={onSelectCountry}
           />
         ))}
       </tbody>

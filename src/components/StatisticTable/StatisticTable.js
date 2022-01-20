@@ -9,7 +9,7 @@ export const SORT_TYPES = {
 export const StatisticTable = ({
   statistic,
   setModalActive,
-  countriesInfo,
+  onSelectCountry,
   searchValue,
 }) => {
   const [sortType, setSortType] = useState(SORT_TYPES.DEFAULT);
@@ -49,7 +49,7 @@ export const StatisticTable = ({
     <Table
       setSortType={setSortType}
       filteredCountries={filteredCountries(items)}
-      countriesInfo={countriesInfo}
+      onSelectCountry={onSelectCountry}
       setModalActive={setModalActive}
     />
   );
