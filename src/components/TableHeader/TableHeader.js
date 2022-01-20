@@ -1,5 +1,5 @@
 import React from "react";
-import { SORT_TYPES } from "../StatisticList/StatisticList";
+import { SORT_TYPES } from "../StatisticTable/StatisticTable";
 import styles from "./tableHeader.module.scss";
 
 export const TableHeader = ({ setSortType }) => {

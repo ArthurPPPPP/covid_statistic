@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./search.module.scss";
 
-export const SearchInput = ({ setValue, searchValue }) => {
+export const SearchInput = ({ onChange, searchValue }) => {
   return (
     <form className={styles.searchingForm} role="search">
       <input
@@ -9,7 +9,7 @@ export const SearchInput = ({ setValue, searchValue }) => {
         value={searchValue}
         type="search"
         placeholder="Search..."
-        onChange={(e) => setValue(e.target.value)}
+        onChange={onChange}
       ></input>
     </form>
   );

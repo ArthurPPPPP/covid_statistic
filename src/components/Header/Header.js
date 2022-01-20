@@ -11,7 +11,7 @@ export const Header = ({ setValue, searchValue }) => {
         <h1>STATISTIC</h1>
       </div>
       <section role="search">
-        <SearchInput searchValue={searchValue} setValue={setValue} />
+        <SearchInput searchValue={searchValue} onChange={setValue} />
       </section>
     </header>
   );
