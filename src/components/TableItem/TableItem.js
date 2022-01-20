@@ -1,22 +1,23 @@
 import React from "react";
+import styles from "./item.module.scss";
 
 export const TableItem = ({
   countryInfo,
   countryNumber,
-  modalContent,
+  onSelectCountry,
   setModalActive,
 }) => {
-  console.log("tableItem");
   return (
     <tr
+      className={styles.item}
       onClick={() => {
-        modalContent(countryInfo);
+        onSelectCountry(countryInfo);
         setModalActive(true);
       }}
     >
-      <td>{countryNumber}</td>
-      <td>{countryInfo.Country}</td>
-      <td>{countryInfo.TotalConfirmed}</td>
+      <td className={styles.countryNumber}>{countryNumber}</td>
+      <td className={styles.Country}>{countryInfo.Country}</td>
+      <td className={styles.TotalConfirmed}>{countryInfo.TotalConfirmed}</td>
     </tr>
   );
 };

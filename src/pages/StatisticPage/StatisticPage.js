@@ -1,14 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { loadStatistic } from "../../api/loadStatistic";
+import styles from "../../styles/styles.module.scss";
+import { loadStatistic } from "../../api/statistic";
+import { Loader } from "../../components/Loader/Loader";
 import { Header } from "../../components/Header/Header";
 import { Modal } from "../../components/Modal/Modal";
-import { Table } from "../../components/Table/Table";
-
-export const SORT_TYPES = {
-  DEFAULT: "Default",
-  TOTAL: "TotalConfirmed",
-  COUNTRY: "Country",
-};
+import { StatisticTable } from "../../components/StatisticTable/StatisticTable";
 
 export const StatisticPage = () => {
   const [error, setError] = useState(null);
@@ -17,7 +13,7 @@ export const StatisticPage = () => {
   const [searchValue, setSearchValue] = useState("");
   const [modalActive, setModalActive] = useState(false);
   const [selectedCountry, setSelectedCountry] = useState([]);
-  const [sortType, setSortType] = useState(SORT_TYPES.DEFAULT);
+
   const getStatistic = async () => {
     setIsLoading(true);
     try {
@@ -28,68 +24,48 @@ export const StatisticPage = () => {
     }
     setIsLoading(false);
   };
+
   useEffect(() => {
     getStatistic();
   }, []);
-  const searcData = (value) => {
-    setSearchValue(value);
+  const searchingValue = (e) => {
+    setSearchValue(e.target.value);
   };
-  const modalContent = (value) => {
+
+  const onSelectCountry = (value) => {
     setSelectedCountry(value);
   };
-  const sortByCountry = () => {
-    return [...statistic].sort((a, b) =>
-      a[SORT_TYPES.COUNTRY]
-        .toString()
-        .localeCompare(b[SORT_TYPES.COUNTRY].toString())
-    );
+
+  const modalOpen = () => {
+    setModalActive(true);
+  };
+  const modalClose = () => {
+    setModalActive(false);
   };
 
-  const sortByTotalConfirmed = () => {
-    return [...statistic].sort((a, b) =>
-      Number(b[SORT_TYPES.TOTAL] - Number(a[SORT_TYPES.TOTAL]))
-    );
-  };
-
-  const getSortedItems = () => {
-    switch (sortType) {
-      case SORT_TYPES.TOTAL:
-        return sortByTotalConfirmed();
-      case SORT_TYPES.COUNTRY:
-        return sortByCountry();
-      default:
-        return statistic;
-    }
-  };
-
-  const items = getSortedItems();
-  const filteredInfo = items.filter((filtered) => {
-    return filtered.Country.toLowerCase().includes(searchValue.toLowerCase());
-  });
-
-  console.log("info");
   return (
-    <div>
+    <>
       {isLoading ? (
-        <p>Loading...</p>
+        <Loader />
       ) : (
-        <div>
-          <Header getValue={searcData} searchValue={searchValue} />
+        <div className={styles.wrapper}>
+          <Header setValue={searchingValue} searchValue={searchValue} />
           <main>
-            <Table
-              sort={setSortType}
-              data={filteredInfo}
-              modalContent={modalContent}
-              setModalActive={setModalActive}
+            <StatisticTable
+              statistic={statistic}
+              setModalActive={modalOpen}
+              onSelectCountry={onSelectCountry}
+              searchValue={searchValue}
             />
           </main>
           <Modal
             active={modalActive}
-            setActive={setModalActive}
             selectedCountry={selectedCountry}
+            modalOpen={modalOpen}
+            modalClose={modalClose}
           />
         </div>
       )}
-    </div>
+    </>
   );
 };
