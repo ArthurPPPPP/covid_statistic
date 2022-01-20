@@ -5,11 +5,11 @@ import deathIco from "../../assets/img/death.jpg";
 import recovereddIco from "../../assets/img/recovered.jpg";
 import { Button } from "../Button/Button";
 
-export const Modal = ({ active, setActive, selectedCountry }) => {
+export const Modal = ({ active, modalOpen, modalClose, selectedCountry }) => {
   return (
     <div
       className={active ? "modal active" : "modal"}
-      onClick={() => setActive(false)}
+      onClick={() => modalOpen(false)}
     >
       <div className="modal__wrapper">
         <div className="madal__content" onClick={(e) => e.stopPropagation()}>
@@ -31,7 +31,7 @@ export const Modal = ({ active, setActive, selectedCountry }) => {
               <p>{selectedCountry.TotalRecovered}</p>
             </div>
           </div>
-          <Button setActive={setActive}>OK</Button>
+          <Button onClick={modalClose}>OK</Button>
         </div>
       </div>
     </div>

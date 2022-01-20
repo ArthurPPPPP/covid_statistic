@@ -1,9 +1,9 @@
 import React from "react";
 import styles from "./button.module.scss";
 
-export const Button = ({ children, setActive }) => {
+export const Button = ({ children, onClick }) => {
   return (
-    <button onClick={() => setActive(false)} className={styles.buttonComponent}>
+    <button onClick={onClick} className={styles.buttonComponent}>
       {children}
     </button>
   );

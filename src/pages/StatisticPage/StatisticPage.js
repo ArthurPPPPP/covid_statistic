@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 import { loadStatistic } from "../../api/statistic";
-
+import { Loader } from "../../components/Loader/Loader";
 import { StatisticList } from "../../components/StatisticList/StatisticList";
 
 export const StatisticPage = () => {
@@ -27,7 +27,7 @@ export const StatisticPage = () => {
   return (
     <>
       {isLoading ? (
-        <p>Loading...</p>
+        <Loader/>
       ) : (
         <StatisticList statistic={statistic} isLoading={isLoading} />
       )}

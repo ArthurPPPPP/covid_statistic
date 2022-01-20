@@ -58,6 +58,13 @@ export const StatisticList = ({ statistic, isLoading }) => {
     });
   };
 
+  const modalOpen = () => {
+    setModalActive(true);
+  };
+  const modalClose = () => {
+    setModalActive(false);
+  };
+
   return (
     <div className={styles.wrapperContainer}>
       {isLoading ? (
@@ -70,13 +77,14 @@ export const StatisticList = ({ statistic, isLoading }) => {
               setSortType={setSortType}
               filteredCountries={filteredCountries(items)}
               countriesInfo={countriesInfo}
-              setModalActive={setModalActive}
+              setModalActive={modalOpen}
             />
           </main>
           <Modal
             active={modalActive}
-            setActive={setModalActive}
             selectedCountry={selectedCountry}
+            modalOpen={modalOpen}
+            modalClose={modalClose}
           />
         </div>
       )}

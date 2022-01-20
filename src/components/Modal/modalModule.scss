@@ -12,11 +12,14 @@
   position: fixed;
   top: 0;
   left: 0;
-  transform: scale(0);
+  opacity: 0;
+  transition: 0.5s;
+  pointer-events: none;
 }
 
 .modal.active {
-  transform: scale(1);
+  opacity: 1;
+  pointer-events: all;
 }
 .modal__wrapper {
   display: flex;

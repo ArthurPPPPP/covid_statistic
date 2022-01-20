@@ -11,15 +11,6 @@ export const SearchInput = ({ setValue, searchValue }) => {
         placeholder="Search..."
         onChange={(e) => setValue(e.target.value)}
       ></input>
-
-      <button
-        onClick={(e) => {
-          e.preventDefault();
-          setValue("");
-        }}
-      >
-        X
-      </button>
     </form>
   );
 };
